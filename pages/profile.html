@@ -16,6 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/kartunama.css">
+  <link rel="stylesheet" href="../dist/css/profile.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -234,8 +235,66 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Kartu Nama</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
 
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="nama">Nama Lengkap</label>
+                      <input class="form-control" id="nama" placeholder="Nama Lengkap" name="nama">
+                    </div>
+                    <div class="form-group">
+                      <label for="pekerjaan">Pekerjaan</label>
+                      <input class="form-control" id="pekerjaan" placeholder="Pekerjaan" name="pekerjaan">
+                    </div>
+                    <div class="form-group">
+                      <label for="perusahaan">Perusahaan</label>
+                      <input class="form-control" id="perusahaan" placeholder="Perusahaan" name="perusahaan">
+                    </div>
+
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="button" onclick="kirim()" class="btn btn-primary">Submit</button>
+                    <button type="button" onclick="reset()" class="btn btn-danger">Reset</button>
+                  </div>
+                </form>
+              </div>
             </div>
+            <div id="cards" class="row mt-5">
+            </div>
+            <!-- <div class="col-6">
+              <div class="kartu" id="main-card">
+                <div class="cover-photo"></div>
+
+                <div class="content">
+                  <h2 class="name" id="valuenama"></h2>
+                  <h3 class="fullstack" id="valuepekerjaan"></h3>
+                  <h3 class="fullstack" id="valueperusahaan"></h3>
+                </div>
+                <div class="contact">
+                  <ul>
+                    <a href="mailto:nurulfikrianiqoh@gmail.com" target="_blank">
+                      <ion-icon name="mail-outline"></ion-icon>
+                      <a href="https://www.linkedin.com/in/nurulfikriyatilaniqoh/" target="_blank">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                      </a>
+                      <a href="https://github.com/nurulfikriyatil" target="_blank">
+                        <ion-icon name="logo-github"></ion-icon>
+                      </a>
+                      <a href="https://codepen.io/nurulfikriyatil/" target="_blank">
+                        <ion-icon name="logo-codepen"></ion-icon>
+                      </a>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
@@ -273,6 +332,100 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <!-- Page specific script -->
+  <script>
+    var id_nama = document.getElementById("nama");
+    var id_pekerjaan = document.getElementById("pekerjaan");
+    var id_perusahaan = document.getElementById("perusahaan");
+    var id_valuenama = document.getElementById("valuenama");
+    var id_valuepekerjaan = document.getElementById("valuepekerjaan");
+    var id_valueperusahaan = document.getElementById("valueperusahaan");
+
+    function kirim() {
+      // id_valuenama.innerText = id_nama.value;
+      // id_valuepekerjaan.innerText = id_pekerjaan.value;
+      // id_valueperusahaan.innerText = id_perusahaan.value;
+
+      let cardInput = document.getElementById("cards");
+      let input = cardInput.innerHTML +
+        "<div class='col-6' id='card'><div class='kartu' >" +
+        "<div class='cover-photo'></div>" +
+        "<div class='content'>" +
+        "<h2 class='name' id='valuenama'>" + id_nama.value + "</h2>" +
+        "<h3 class='fullstack' id='valuepekerjaan'>" + id_pekerjaan.value + "</h3>" +
+        "<h3 class='fullstack' id='valueperusahaan'>" + id_perusahaan.value + "</h3>" +
+        "</div>" +
+        "<div class='contact'>" +
+        "<ul><a href='https://www.gmail.com/' target='_blank'>" +
+        "<ion-icon name='mail-outline'></ion-icon>" +
+        "</a>" +
+        "<a href='https://www.linkedin.com/' target='_blank'>" +
+        "<ion-icon name='logo-linkedin'></ion-icon>" +
+        "</a>" +
+        "<a href='https://github.com/' target='_blank'>" +
+        "<ion-icon name='logo-github'></ion-icon>" +
+        "</a>" +
+        "<a href='https://codepen.io/' target='_blank'>" +
+        "<ion-icon name='logo-codepen'></ion-icon>" +
+        "</a>" +
+        "</ul>" +
+        "</div>" +
+        "</div>" +
+        "</div>"
+      cardInput.innerHTML = input;
+    }
+
+    function reset() {
+      const element = document.getElementById("card");
+      element.remove();
+    }
+
+  </script>
+
+  <script>
+    let data = [{
+      nama: "Nurul",
+      pekerjaan: "Trainee",
+      perusahaan: "Prosigmaka"
+    }, {
+      nama: "Nurul",
+      pekerjaan: "Trainee",
+      perusahaan: "Prosigmaka"
+    }]
+
+  </script>
+  <script>
+    for (let i = 0; i < data.length; i++) {
+      let cardInput = document.getElementById("cards");
+      let input = cardInput.innerHTML +
+        "<div class='col-6' id='card'><div class='kartu' >" +
+        "<div class='cover-photo'></div>" +
+        "<div class='content'>" +
+        "<h2 class='name' id='valuenama'>" + data[i].nama + "</h2>" +
+        "<h3 class='fullstack' id='valuepekerjaan'>" + data[i].pekerjaan + "</h3>" +
+        "<h3 class='fullstack' id='valueperusahaan'>" + data[i].perusahaan + "</h3>" +
+        "</div>" +
+        "<div class='contact'>" +
+        "<ul><a href='https://www.gmail.com/' target='_blank'>" +
+        "<ion-icon name='mail-outline'></ion-icon>" +
+        "</a>" +
+        "<a href='https://www.linkedin.com/' target='_blank'>" +
+        "<ion-icon name='logo-linkedin'></ion-icon>" +
+        "</a>" +
+        "<a href='https://github.com/' target='_blank'>" +
+        "<ion-icon name='logo-github'></ion-icon>" +
+        "</a>" +
+        "<a href='https://codepen.io/' target='_blank'>" +
+        "<ion-icon name='logo-codepen'></ion-icon>" +
+        "</a>" +
+        "</ul>" +
+        "</div>" +
+        "</div>" +
+        "</div>"
+      cardInput.innerHTML = input;
+    }
+
+  </script>
+
   <script>
     $(function () {
       $(document).on('click', '[data-toggle="lightbox"]', function (event) {
